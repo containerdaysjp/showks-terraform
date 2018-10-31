@@ -1,4 +1,3 @@
-output*
 plan
 *.terraform
 *.tfstate.*
