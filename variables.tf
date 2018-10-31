@@ -34,3 +34,4 @@ variable "zones" {
 variable "jumpbox_machine_type" {
   default = "g1-small"
 }
+variable "managed_zone" {}
