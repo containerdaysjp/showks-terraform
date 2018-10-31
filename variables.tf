@@ -18,11 +18,8 @@ variable "initial_node_count"{
 variable "machine_type" {
   default = "n1-standard-2"
 }
-variable "master_auth_username" {
-  default = "admin"
-}
 variable "master_auth_password" {
-  default= "foooobaaaaabaz"
+  default= "foooobaaaaabazbazbazbazbaz"
 }
 variable "min_master_version" {
   default = "1.10.7-gke.6"

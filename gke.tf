@@ -12,8 +12,8 @@ resource "google_container_cluster" "cluster-prod" {
         machine_type   = "${var.machine_type}"
     }
     master_auth {
-        username       = "${var.master_auth_username}"
-        password       = "${var.master_auth_password}"
+        username       = "admin"
+        password       = "${random_string.password.result}"
     }
 }
 
@@ -32,7 +32,13 @@ resource "google_container_cluster" "cluster-stg" {
         preemptible    = true
     }
     master_auth {
-        username       = "${var.master_auth_username}"
-        password       = "${var.master_auth_password}"
+        username       = "admin"
+        password       = "${random_string.password.result}"
     }
 }
+
+resource "random_string" "password" {
+  length = 16
+  special = true
+}
+
