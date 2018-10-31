@@ -1,5 +1,5 @@
-resource "google_container_cluster" "showks-cluster-prod" {
-    name               = "${var.cluster_name}-prod"
+resource "google_container_cluster" "cluster-prod" {
+    name               = "${var.env_name}-${var.cluster_name}-prod"
     zone               = "${var.zone}"
     initial_node_count = "${var.initial_node_count}"
 
@@ -17,8 +17,8 @@ resource "google_container_cluster" "showks-cluster-prod" {
     }
 }
 
-resource "google_container_cluster" "showks-cluster-stg" {
-    name               = "${var.cluster_name}-stg"
+resource "google_container_cluster" "cluster-stg" {
+    name               = "${var.env_name}-${var.cluster_name}-stg"
     zone               = "${var.zone}"
     initial_node_count = "${var.initial_node_count}"
 
