@@ -29,7 +29,7 @@ resource "google_dns_record_set" "spinnaker_api" {
 
   managed_zone = "${data.google_dns_managed_zone.showks_zone.name}"
 
-  rrdatas = ["${google_compute_global_address.spinnaker_api_ip.address}"]
+  rrdatas = ["${google_compute_address.spinnaker_api_ip.address}"]
 }
 
 resource "google_dns_record_set" "spinnaker_ui" {
@@ -39,5 +39,5 @@ resource "google_dns_record_set" "spinnaker_ui" {
 
   managed_zone = "${data.google_dns_managed_zone.showks_zone.name}"
 
-  rrdatas = ["${google_compute_global_address.spinnaker_ui_ip.address}"]
+  rrdatas = ["${google_compute_address.spinnaker_ui_ip.address}"]
 }
