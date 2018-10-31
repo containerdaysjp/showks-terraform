@@ -11,7 +11,10 @@ variable "zone" {
 variable "network" {
   default = "default"
 }
-variable "initial_node_count"{
+variable "stg_node_count"{
+  default = "3"
+}
+variable "prod_node_count"{
   default = "3"
 }
 variable "machine_type" {
