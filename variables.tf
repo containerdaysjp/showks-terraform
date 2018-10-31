@@ -1,5 +1,4 @@
 variable "project" {}
-variable "service_account_key" {}
 variable "cluster_name" {
   default = "gke"
 }
