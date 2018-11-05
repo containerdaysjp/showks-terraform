@@ -37,14 +37,30 @@ resource "google_container_cluster" "cluster-stg" {
 
   min_master_version = "${var.min_master_version}"
   node_version       = "${var.node_version}"
-
-  node_config {
-      machine_type   = "${var.machine_type}"
-      preemptible    = true
+  node_pool = {
+    name = "default-pool"
   }
+  lifecycle {
+    ignore_changes = [
+      "node_pool",
+      "ip_allocation_policy",
+    ]
+  }
+
   master_auth {
       username       = "admin"
       password       = "${random_string.password.result}"
+  }
+}
+
+resource "google_container_node_pool" "np_stg" {
+  name               = "${var.env_name}-${var.cluster_name}-stg-np"
+  zone               = "${var.zone}"
+  cluster            = "${google_container_cluster.cluster-stg.name}"
+  node_count         = "${var.stg_node_count}"
+
+  node_config {
+    machine_type   = "${var.machine_type}"
   }
 }
 
