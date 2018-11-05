@@ -38,3 +38,4 @@ variable "jumpbox_machine_type" {
   default = "g1-small"
 }
 variable "managed_zone" {}
+variable "stg_ingress_nginx_address" {}

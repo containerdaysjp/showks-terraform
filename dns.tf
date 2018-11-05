@@ -41,3 +41,23 @@ resource "google_dns_record_set" "spinnaker_ui" {
 
   rrdatas = ["${google_compute_address.spinnaker_ui_ip.address}"]
 }
+
+resource "google_dns_record_set" "stg_ingress_nginx" {
+  name = "ingress-nginx.stg.${data.google_dns_managed_zone.showks_zone.dns_name}"
+  type = "A"
+  ttl  = 300
+
+  managed_zone = "${data.google_dns_managed_zone.showks_zone.name}"
+
+  rrdatas = ["${var.stg_ingress_nginx_address}"]
+}
+
+resource "google_dns_record_set" "stg_wildcard" {
+  name = "*.stg.${data.google_dns_managed_zone.showks_zone.dns_name}"
+  type = "CNAME"
+  ttl  = 300
+
+  managed_zone = "${data.google_dns_managed_zone.showks_zone.name}"
+
+  rrdatas = ["${google_dns_record_set.stg_ingress_nginx.name}"]
+}
