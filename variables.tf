@@ -40,3 +40,4 @@ variable "jumpbox_machine_type" {
 variable "managed_zone" {}
 variable "stg_ingress_nginx_address" {}
 variable "prod_ingress_nginx_address" {}
+variable "concourse_address" {}
