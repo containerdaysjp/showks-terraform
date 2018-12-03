@@ -19,7 +19,7 @@ resource "google_dns_record_set" "concourse" {
 
   managed_zone = "${data.google_dns_managed_zone.showks_zone.name}"
 
-  rrdatas = ["${google_compute_global_address.concourse_ip.address}"]
+  rrdatas = ["${var.concourse_address}"]
 }
 
 resource "google_dns_record_set" "spinnaker_api" {
