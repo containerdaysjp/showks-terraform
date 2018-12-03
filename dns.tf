@@ -92,3 +92,12 @@ resource "google_dns_record_set" "prod_wildcard" {
   rrdatas = ["${google_dns_record_set.prod_ingress_nginx.name}"]
 }
 
+resource "google_dns_record_set" "form" {
+  name = "form.${data.google_dns_managed_zone.showks_zone.dns_name}"
+  type = "CNAME"
+  ttl  = 300
+
+  managed_zone = "${data.google_dns_managed_zone.showks_zone.name}"
+
+  rrdatas = ["${google_dns_record_set.stg_ingress_nginx.name}"]
+}
